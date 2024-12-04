@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/loginFragment">
+
+
+    <!-- LoginFragment -->
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.notesapp.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_noteListFragment"
+            app:destination="@id/noteListFragment" />
+    </fragment>
+
+
+    <!-- NoteListFragment -->
+    <fragment
+        android:id="@+id/noteListFragment"
+        android:name="com.example.notesapp.NoteListFragment"
+        android:label="Note List"
+        tools:layout="@layout/fragment_notes_list">
+
+        <!-- Action to navigate to NoteDetailFragment -->
+        <action
+            android:id="@+id/showNoteDetail"
+            app:destination="@id/noteDetailFragment" />
+        <action
+            android:id="@+id/action_noteListFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <!-- NoteDetailFragment -->
+    <fragment
+        android:id="@+id/noteDetailFragment"
+        android:name="com.example.notesapp.NoteDetailFragment"
+        android:label="Note Detail"
+        tools:layout="@layout/fragment_note_detail">
+
+        <!-- Argument for passing noteId -->
+        <argument
+            android:name="noteId"
+            app:argType="string"
+            app:nullable="true"/>
+        <action
+            android:id="@+id/saveNote"
+            app:destination="@id/noteListFragment" />
+    </fragment>
+
+</navigation>
